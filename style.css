@@ -1,0 +1,22 @@
+div {
+    border: solid 0.5px green;
+}
+
+.container {
+    margin: auto;
+    margin-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+}
+
+.tile {
+    box-sizing: border-box;
+    width: 31.25px;
+    height: 31.25px;
+}
+
+.filled {
+    background-color: black;
+}
