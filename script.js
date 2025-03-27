@@ -3,7 +3,9 @@ function createGrid(n) {
     for (let i = 0; i < n * n; i++) {
         let tile = document.createElement("div");
         tile.classList.add("tile");
-        container.appendChild(tile);
+        let sizeOfTile = 600 / n;
+        tile.setAttribute("style", `width: ${sizeOfTile}px; height: ${sizeOfTile}px;`);
+        grid.appendChild(tile);
     }
 }
 
@@ -11,9 +13,9 @@ function fillSquare(tile) {
     tile.classList.add("filled");
 }
 
-let container = document.querySelector(".container");
+let grid = document.querySelector(".grid");
 
-let n = 16;
+let n = 32;
 createGrid(n);
 
 let mousePressed = false;
