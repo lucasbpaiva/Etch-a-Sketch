@@ -33,4 +33,8 @@ for (let i = 0; i < tileList.length; i++) {
             fillSquare(currentTile);
         }
     });
+
+    currentTile.addEventListener("click", () => {
+        fillSquare(currentTile);
+    })
 }
