@@ -1,3 +1,4 @@
+//create and update grid
 function createGrid(n) {
 
     for (let i = 0; i < n * n; i++) {
@@ -16,23 +17,40 @@ function createGrid(n) {
     }
 }
 
+function updateGrid () {
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild);
+    }
+    createGrid(sizeSlider.value);
+}
+
+let grid = document.querySelector(".grid");
+let sizeSlider = document.querySelector(".sizeSlider");
+let sizePara = document.querySelector(".sizePara");
+let n = 64;
+createGrid(n); 
+
+sizeSlider.addEventListener("input", () => {
+    sizePara.textContent = `${sizeSlider.value} X ${sizeSlider.value}`;
+})
+
+sizeSlider.addEventListener("change", updateGrid)
+//-------------------------------------
+
 function fillSquare(tile, color) {
     tile.style.backgroundColor = color;
 }
 
-let grid = document.querySelector(".grid");
-
-let n = 32;
-createGrid(n);
-
+//detect mouse pressed
 let mousePressed = false;
 document.body.addEventListener("mousedown", () => {
     mousePressed = true;
 })
 document.body.addEventListener("mouseup", () => {
     mousePressed = false;
-})
+}) //-------------------
 
+//choose colors
 let eraserBtn = document.querySelector(".eraserButton");
 let penBtn = document.querySelector(".penButton");
 let color = "pink";
@@ -43,7 +61,7 @@ eraserBtn.addEventListener("click", () => {
 
 penBtn.addEventListener("click", () => {
     color = "pink";
-})
+}) //------------------
 
 let tileList = document.querySelectorAll(".tile");
 for (let i = 0; i < tileList.length; i++) {

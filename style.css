@@ -42,6 +42,10 @@ h1 {
     gap: 10px;
 }
 
+.sizeSlider {
+    width: 80%;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
