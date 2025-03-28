@@ -5,6 +5,13 @@ function createGrid(n) {
         tile.classList.add("tile");
         let sizeOfTile = 600 / n;
         tile.setAttribute("style", `width: ${sizeOfTile}px; height: ${sizeOfTile}px;`);
+        //ensure border is 1px wide on edge cases
+        if ((i + 1) % n == 0) { //right edge of the square grid
+            tile.style.borderRight = "0px";
+        }
+        if (i >= (n * (n - 1))) { //bottom edge of the square grid
+            tile.style.borderBottom = "0px";
+        }
         grid.appendChild(tile);
     }
 }
@@ -15,7 +22,7 @@ function fillSquare(tile) {
 
 let grid = document.querySelector(".grid");
 
-let n = 32;
+let n = 64;
 createGrid(n);
 
 let mousePressed = false;

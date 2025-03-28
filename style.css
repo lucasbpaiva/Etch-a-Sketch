@@ -1,4 +1,4 @@
-.grid, .tile, .menu {
+.grid, .menu {
     border: solid 1px black;
 }
 
@@ -42,6 +42,9 @@ h1 {
 
 .tile {
     box-sizing: border-box;
+    border: 1px solid black;
+    border-top: 0px;
+    border-left: 0px;
 }
 
 .filled {
