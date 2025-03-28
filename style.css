@@ -35,6 +35,13 @@ h1 {
     flex-direction: column;
 }
 
+.menuOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;

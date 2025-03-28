@@ -34,10 +34,15 @@ document.body.addEventListener("mouseup", () => {
 })
 
 let eraserBtn = document.querySelector(".eraserButton");
-
+let penBtn = document.querySelector(".penButton");
 let color = "pink";
+
 eraserBtn.addEventListener("click", () => {
     color = "white";
+})
+
+penBtn.addEventListener("click", () => {
+    color = "pink";
 })
 
 let tileList = document.querySelectorAll(".tile");
