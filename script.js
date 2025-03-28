@@ -22,7 +22,7 @@ function fillSquare(tile) {
 
 let grid = document.querySelector(".grid");
 
-let n = 64;
+let n = 32;
 createGrid(n);
 
 let mousePressed = false;
@@ -43,7 +43,7 @@ for (let i = 0; i < tileList.length; i++) {
         }
     });
 
-    currentTile.addEventListener("click", () => {
+    currentTile.addEventListener("mousedown", () => {
         fillSquare(currentTile);
     })
 }
