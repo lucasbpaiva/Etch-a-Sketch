@@ -15,6 +15,20 @@ function createGrid(n) {
         }
         grid.appendChild(tile);
     }
+
+    //add event listeners for tiles
+    let tileList = document.querySelectorAll(".tile");
+    tileList.forEach((node) => {
+        node.addEventListener("mouseover", () => {
+            if (mousePressed) {
+                fillSquare(node, color);
+            }
+        });
+
+        node.addEventListener("mousedown", () => {
+            fillSquare(node, color);
+        })
+    })
 }
 
 function updateGrid () {
@@ -27,7 +41,7 @@ function updateGrid () {
 let grid = document.querySelector(".grid");
 let sizeSlider = document.querySelector(".sizeSlider");
 let sizePara = document.querySelector(".sizePara");
-let n = 64;
+let n = 32;
 createGrid(n); 
 
 sizeSlider.addEventListener("input", () => {
@@ -53,26 +67,32 @@ document.body.addEventListener("mouseup", () => {
 //choose colors
 let eraserBtn = document.querySelector(".eraserButton");
 let penBtn = document.querySelector(".penButton");
+penBtn.classList.add("button-selected");
+let clearBtn = document.querySelector(".clearButton");
+let buttons = document.querySelectorAll("button");
 let color = "pink";
 
-eraserBtn.addEventListener("click", () => {
+function toggleSelectedButton(event) {
+    buttons.forEach((node) => {
+        node.classList.remove("button-selected");
+    })
+    event.target.classList.add("button-selected");
+}
+
+penBtn.addEventListener("click", (event) => {
+    toggleSelectedButton(event);
+    color = "pink";
+})
+
+eraserBtn.addEventListener("click", (event) => {
+    toggleSelectedButton(event);
     color = "white";
 })
 
-penBtn.addEventListener("click", () => {
-    color = "pink";
-}) //------------------
-
-let tileList = document.querySelectorAll(".tile");
-for (let i = 0; i < tileList.length; i++) {
-    let currentTile = tileList[i];
-    currentTile.addEventListener("mouseover", () => {
-        if (mousePressed) {
-            fillSquare(currentTile, color);
-        }
+clearBtn.addEventListener("click", (event) => {
+    let tileList = document.querySelectorAll(".tile");
+    tileList.forEach((node) => {
+        fillSquare(node, "white");
     });
-
-    currentTile.addEventListener("mousedown", () => {
-        fillSquare(currentTile, color);
-    })
-}
+})
+//------------------

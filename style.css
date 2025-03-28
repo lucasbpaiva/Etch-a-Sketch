@@ -59,3 +59,13 @@ h1 {
     border-top: 0px;
     border-left: 0px;
 }
+
+button {
+    background-color: aliceblue;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.button-selected {
+    background-color: chartreuse;
+}
