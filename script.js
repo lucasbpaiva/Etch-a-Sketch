@@ -16,8 +16,8 @@ function createGrid(n) {
     }
 }
 
-function fillSquare(tile) {
-    tile.classList.add("filled");
+function fillSquare(tile, color) {
+    tile.style.backgroundColor = color;
 }
 
 let grid = document.querySelector(".grid");
@@ -33,17 +33,23 @@ document.body.addEventListener("mouseup", () => {
     mousePressed = false;
 })
 
+let eraserBtn = document.querySelector(".eraserButton");
+
+let color = "pink";
+eraserBtn.addEventListener("click", () => {
+    color = "white";
+})
 
 let tileList = document.querySelectorAll(".tile");
 for (let i = 0; i < tileList.length; i++) {
     let currentTile = tileList[i];
     currentTile.addEventListener("mouseover", () => {
         if (mousePressed) {
-            fillSquare(currentTile);
+            fillSquare(currentTile, color);
         }
     });
 
     currentTile.addEventListener("mousedown", () => {
-        fillSquare(currentTile);
+        fillSquare(currentTile, color);
     })
 }
