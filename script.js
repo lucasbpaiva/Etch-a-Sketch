@@ -21,11 +21,17 @@ function createGrid(n) {
     tileList.forEach((node) => {
         node.addEventListener("mouseover", () => {
             if (mousePressed) {
+                if (rainbowMode) {
+                    selectRandomColor();
+                }
                 fillSquare(node, color);
             }
         });
 
         node.addEventListener("mousedown", () => {
+            if (rainbowMode) {
+                selectRandomColor();
+            }
             fillSquare(node, color);
         })
     })
@@ -114,7 +120,6 @@ function selectRandomColor () {
 
 rainbowBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
-    selectRandomColor();
 })
 
 clearBtn.addEventListener("click", (event) => {
