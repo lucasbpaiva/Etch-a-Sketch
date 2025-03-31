@@ -87,18 +87,17 @@ function toggleSelectedButton(event) {
         node.classList.remove("button-selected");
     })
     event.target.classList.add("button-selected");
+    eraserMode = event.target == eraserBtn;
 }
 
 penBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
-    eraserMode = false;
     color = colorPicker.value;
 })
 
 eraserBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
     color = "white";
-    eraserMode = true;
 })
 
 clearBtn.addEventListener("click", (event) => {
