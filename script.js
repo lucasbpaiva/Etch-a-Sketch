@@ -64,13 +64,15 @@ document.body.addEventListener("mouseup", () => {
     mousePressed = false;
 }) //-------------------
 
-//choose colors
+//menu options
 let eraserBtn = document.querySelector(".eraserButton");
 let penBtn = document.querySelector(".penButton");
 penBtn.classList.add("button-selected");
 let clearBtn = document.querySelector(".clearButton");
+let toggleGridBtn = document.querySelector(".toggleGridButton");
 let buttons = document.querySelectorAll("button");
 let color = "pink";
+let gridless = false;
 
 function toggleSelectedButton(event) {
     buttons.forEach((node) => {
@@ -94,5 +96,38 @@ clearBtn.addEventListener("click", (event) => {
     tileList.forEach((node) => {
         fillSquare(node, "white");
     });
+})
+
+function removeGrid () {
+    let tiles = document.querySelectorAll(".tile");
+    tiles.forEach((node) => {
+        node.style.border = "0px";
+    });
+}
+
+function addGrid() {
+    let tiles = Array.from(document.querySelectorAll(".tile"));
+    let n = sizeSlider.value;
+    for (const [position, tile] of tiles.entries()) {
+        tile.style.border = "1px solid black";
+        tile.style.borderTop = "0px";
+        tile.style.borderLeft = "0px";
+        if ((position + 1) % n == 0) { //right edge of the square grid
+            tile.style.borderRight = "0px";
+        }
+        if (position >= (n * (n - 1))) { //bottom edge of the square grid
+            tile.style.borderBottom = "0px";
+        }
+    }
+}
+
+toggleGridBtn.addEventListener("click", () => {
+    if (gridless) {
+        addGrid();
+        gridless = false;
+    } else {
+        removeGrid();
+        gridless = true;
+    }
 })
 //------------------
