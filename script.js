@@ -71,8 +71,16 @@ penBtn.classList.add("button-selected");
 let clearBtn = document.querySelector(".clearButton");
 let toggleGridBtn = document.querySelector(".toggleGridButton");
 let buttons = document.querySelectorAll("button");
-let color = "pink";
+let color = "black";
+let colorPicker = document.querySelector("#SelectedColor");
 let gridless = false;
+let eraserMode = false;
+
+colorPicker.addEventListener("input", () => {
+    if (! eraserMode) {
+        color = colorPicker.value;
+    }
+})
 
 function toggleSelectedButton(event) {
     buttons.forEach((node) => {
@@ -83,12 +91,14 @@ function toggleSelectedButton(event) {
 
 penBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
-    color = "pink";
+    eraserMode = false;
+    color = colorPicker.value;
 })
 
 eraserBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
     color = "white";
+    eraserMode = true;
 })
 
 clearBtn.addEventListener("click", (event) => {
