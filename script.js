@@ -65,9 +65,10 @@ document.body.addEventListener("mouseup", () => {
 }) //-------------------
 
 //menu options
-let eraserBtn = document.querySelector(".eraserButton");
 let penBtn = document.querySelector(".penButton");
 penBtn.classList.add("button-selected");
+let eraserBtn = document.querySelector(".eraserButton");
+let rainbowBtn = document.querySelector(".rainbowButton");
 let clearBtn = document.querySelector(".clearButton");
 let toggleGridBtn = document.querySelector(".toggleGridButton");
 let buttons = document.querySelectorAll("button");
@@ -75,9 +76,10 @@ let color = "black";
 let colorPicker = document.querySelector("#SelectedColor");
 let gridless = false;
 let eraserMode = false;
+let rainbowMode = false;
 
 colorPicker.addEventListener("input", () => {
-    if (! eraserMode) {
+    if (!(eraserMode || rainbowMode)) {
         color = colorPicker.value;
     }
 })
@@ -88,6 +90,7 @@ function toggleSelectedButton(event) {
     })
     event.target.classList.add("button-selected");
     eraserMode = event.target == eraserBtn;
+    rainbowMode = event.target == rainbowBtn;
 }
 
 penBtn.addEventListener("click", (event) => {
@@ -98,6 +101,20 @@ penBtn.addEventListener("click", (event) => {
 eraserBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
     color = "white";
+})
+
+function selectRandomColor () {
+    const rgb = [];
+    for (let i = 0; i < 3; i++) {
+        let element = Math.floor(Math.random() * 256);
+        rgb.push(element);
+    }
+    color = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+}
+
+rainbowBtn.addEventListener("click", (event) => {
+    toggleSelectedButton(event);
+    selectRandomColor();
 })
 
 clearBtn.addEventListener("click", (event) => {
