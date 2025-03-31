@@ -78,15 +78,24 @@ let rainbowBtn = document.querySelector(".rainbowButton");
 let clearBtn = document.querySelector(".clearButton");
 let toggleGridBtn = document.querySelector(".toggleGridButton");
 let buttons = document.querySelectorAll("button");
-let color = "black";
+let opacity = 1;
+let color = `rgba(0,0,0,${opacity})`;
 let colorPicker = document.querySelector("#SelectedColor");
 let gridless = false;
 let eraserMode = false;
 let rainbowMode = false;
 
+function convertHexToRGBA (color) {
+    let RedValue = parseInt(color.slice(1,3), 16);
+    let GreenValue = parseInt(color.slice(3,5), 16);
+    let BlueValue = parseInt(color.slice(5), 16);
+    return `rgba(${RedValue},${GreenValue},${BlueValue},${opacity})`;
+}
+
 colorPicker.addEventListener("input", () => {
     if (!(eraserMode || rainbowMode)) {
-        color = colorPicker.value;
+        color = convertHexToRGBA(colorPicker.value);
+        console.log(color);
     }
 })
 
@@ -101,7 +110,7 @@ function toggleSelectedButton(event) {
 
 penBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
-    color = colorPicker.value;
+    color = convertHexToRGBA(colorPicker.value);
 })
 
 eraserBtn.addEventListener("click", (event) => {
