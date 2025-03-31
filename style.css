@@ -2,11 +2,6 @@
     border: solid 1px black;
 }
 
-body {
-    display: flex;
-    padding: 20px 15% 20px 25%; /* top righ bottom left */
-}
-
 h1 {
     text-align: center;
 }
@@ -14,6 +9,7 @@ h1 {
 .container {
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -28,7 +24,7 @@ h1 {
 }
 
 .menu {
-    width: 240px;
+    width: 200px;
     height: 600px;
     text-align: center;
     display: flex;
