@@ -18,16 +18,23 @@
         <div class="menu">
             <div class="menuHeader"><p>Menu</p></div>
             <div class="menuOptions">
+                <div class="colorPicker">
+                    <label for="SelectedColor">Color: </label>
+                    <input type="color" name="SelectedColor" id="SelectedColor">
+                </div>
                 <div class="pen"><button type="button" class="penButton">Pen</button></div>
                 <div class="eraser"><button type="button" class="eraserButton">Eraser</button></div>
                 <div class="rainbow"><button type="button" class="rainbowButton">Rainbow Mode</button></div>
                 <div class="clear"><button type="button" class="clearButton">Clear</button></div>
                 <div><button type="button" class="toggleGridButton">Toggle Grid</button></div>
-                <div class="size">
-                    <p class="sizePara">32 X 32</p>
-                    <input class="sizeSlider" type="range" min="1" max="100" value="32">
+                <div class="opacity">
+                    <label for="opacitySlider" class="opacityInfo">Opacity: 100%</label>
+                    <input type="range" name="opacitySlider" id="opacitySlider" min="10" max="100" step="10" value="100">
                 </div>
-                <div class="colorPicker"><label for="SelectedColor">Color: </label><input type="color" name="SelectedColor" id="SelectedColor"></div>
+                <div class="size">
+                     <label for="sizeOfGrid" class="sizeInfo">32 X 32</label>
+                    <input name="sizeOfGrid" id="sizeOfGrid" class="sizeSlider" type="range" min="1" max="100" value="32">
+                </div>
             </div>
         </div>
     </div>

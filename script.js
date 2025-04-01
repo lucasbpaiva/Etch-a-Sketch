@@ -46,18 +46,19 @@ function updateGrid () {
 
 let grid = document.querySelector(".grid");
 let sizeSlider = document.querySelector(".sizeSlider");
-let sizePara = document.querySelector(".sizePara");
+let sizeInfo = document.querySelector(".sizeInfo");
 let n = 32;
 createGrid(n); 
 
 sizeSlider.addEventListener("input", () => {
-    sizePara.textContent = `${sizeSlider.value} X ${sizeSlider.value}`;
+    sizeInfo.textContent = `${sizeSlider.value} X ${sizeSlider.value}`;
 })
 
 sizeSlider.addEventListener("change", updateGrid)
 //-------------------------------------
 
 function fillSquare(tile, color) {
+    tile.style.opacity = opacity;
     tile.style.backgroundColor = color;
 }
 
@@ -79,23 +80,22 @@ let clearBtn = document.querySelector(".clearButton");
 let toggleGridBtn = document.querySelector(".toggleGridButton");
 let buttons = document.querySelectorAll("button");
 let opacity = 1;
-let color = `rgba(0,0,0,${opacity})`;
+let color = "black";
 let colorPicker = document.querySelector("#SelectedColor");
 let gridless = false;
 let eraserMode = false;
 let rainbowMode = false;
 
-function convertHexToRGBA (color) {
-    let RedValue = parseInt(color.slice(1,3), 16);
-    let GreenValue = parseInt(color.slice(3,5), 16);
-    let BlueValue = parseInt(color.slice(5), 16);
-    return `rgba(${RedValue},${GreenValue},${BlueValue},${opacity})`;
-}
+// function convertHexToRGBA (color) {
+//     let RedValue = parseInt(color.slice(1,3), 16);
+//     let GreenValue = parseInt(color.slice(3,5), 16);
+//     let BlueValue = parseInt(color.slice(5), 16);
+//     return `rgba(${RedValue},${GreenValue},${BlueValue},${opacity})`;
+// }
 
 colorPicker.addEventListener("input", () => {
     if (!(eraserMode || rainbowMode)) {
-        color = convertHexToRGBA(colorPicker.value);
-        console.log(color);
+        color = colorPicker.value;
     }
 })
 
@@ -110,7 +110,7 @@ function toggleSelectedButton(event) {
 
 penBtn.addEventListener("click", (event) => {
     toggleSelectedButton(event);
-    color = convertHexToRGBA(colorPicker.value);
+    color = colorPicker.value;
 })
 
 eraserBtn.addEventListener("click", (event) => {
@@ -169,5 +169,17 @@ toggleGridBtn.addEventListener("click", () => {
         removeGrid();
         gridless = true;
     }
+})
+
+let opacitySlider = document.querySelector("#opacitySlider");
+let opacityInfo = document.querySelector(".opacityInfo");
+
+opacitySlider.addEventListener("input", () => {
+    opacityInfo.textContent = `Opacity: ${opacitySlider.value}%`;
+})
+
+opacitySlider.addEventListener("change", () => {
+    opacity = opacitySlider.value / 100;
+    console.log(opacity);
 })
 //------------------
