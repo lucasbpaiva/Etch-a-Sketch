@@ -64,10 +64,10 @@ function fillSquare(tile, color) {
 
 //detect mouse pressed
 let mousePressed = false;
-document.body.addEventListener("mousedown", () => {
+document.addEventListener("mousedown", () => {
     mousePressed = true;
 })
-document.body.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", () => {
     mousePressed = false;
 }) //-------------------
 

@@ -1,4 +1,7 @@
-.grid, .menu {
+body {
+    background-color: #ececec;
+}
+.grid {
     border: solid 1px black;
 }
 
@@ -8,7 +11,7 @@ h1 {
 
 .container {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     gap: 30px;
 }
@@ -25,10 +28,13 @@ h1 {
 
 .menu {
     width: 200px;
-    height: 600px;
+    height: 480px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    background-color: #9fd3c7;
+    border-radius: 5px;
+    margin-top: 190px;
 }
 
 .menuOptions {
@@ -36,6 +42,7 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     gap: 15px;
+    margin: auto;
 }
 
 .sizeSlider, #opacitySlider {
@@ -47,6 +54,7 @@ h1 {
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
+    background-color: white;
 }
 
 .tile {
@@ -57,12 +65,12 @@ h1 {
 }
 
 button {
-    background-color: aliceblue;
+    background-color: #ececec;
     padding: 5px 20px;
     border-radius: 5px;
     width: 80%;
 }
 
 .button-selected {
-    background-color: chartreuse;
+    background-color: rgb(53, 117, 255);
 }
